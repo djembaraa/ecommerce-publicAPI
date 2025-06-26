@@ -27,22 +27,6 @@
 
 </div>
 
-<br>
-
-**Demo Responsif (GIF)**
-
-<div align="center">
-
-![djembaraa-web front-3](https://github.com/user-attachments/assets/bfcd87ac-2981-4439-9e42-4eb8be3b7582)
-![djembaraa-web front-3](https://github.com/user-attachments/assets/bfcd87ac-2981-4439-9e42-4eb8be3b7582)
-![Uploading djembaraa-web front-3.gif…]()
-![Uploading djembaraa-web front-3.gif…]()
-![djembaraa-web front-3](https://github.com/user-attachments/assets/5e1e7ce0-cc92-4db9-b25e-e897145f9492)
-![djembaraa-web front-3](https://github.com/user-attachments/assets/5e1e7ce0-cc92-4db9-b25e-e897145f9492)
-
-
-</div>
-
 ---
 
 ### 🚀 Fitur Utama
