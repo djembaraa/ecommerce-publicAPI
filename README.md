@@ -33,7 +33,7 @@
 
 <div align="center">
 
-![Demo Responsif](https://qrswqbfuolwuqvfsonia.supabase.co/storage/v1/object/public/asset//djembaraa-web%20front-3.gif)
+![Demo Responsif](https://imgur.com/a/WRqFQ0i)
 
 </div>
 
