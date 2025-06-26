@@ -26,7 +26,7 @@
 
 *Tampilan Desktop & Fitur Filter*
 
-![Tampilan Desktop Aplikasi](https://github.com/user-attachments/assets/5e1e7ce0-cc92-4db9-b25e-e897145f9492)
+![Tampilan Desktop Aplikasi](https://qrswqbfuolwuqvfsonia.supabase.co/storage/v1/object/public/asset//Screenshot%202025-06-26%20231018.png)
 
 
 </div>
