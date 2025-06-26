@@ -4,14 +4,17 @@
 
 <p>Sebuah aplikasi web katalog produk yang dibangun sebagai bagian dari proses seleksi Frontend Developer di bikinkonten.ai. Aplikasi ini menampilkan daftar produk dari API publik dengan fitur pencarian dan filter kategori secara real-time di sisi klien.</p>
 
+### 🌐 **[Lihat Live Demo](https://ecommerce-public-api.vercel.app/)** 🌐
+
 </div>
 
 <div align="center">
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![Vercel Status](https://img.shields.io/badge/Vercel-live-green?logo=vercel)](https://ecommerce-public-api.vercel.app/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-blue?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![TanStack Query](https://img.shields.io/badge/TanStack_Query-v5-FF4154?logo=react-query&logoColor=white)](https://tanstack.com/query/latest)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 </div>
 
@@ -23,7 +26,8 @@
 
 *Tampilan Desktop & Fitur Filter*
 
-![Tampilan Desktop Aplikasi](https://qrswqbfuolwuqvfsonia.supabase.co/storage/v1/object/public/asset//Screenshot%202025-06-26%20231018.png)
+![Tampilan Desktop Aplikasi](https://github.com/user-attachments/assets/5e1e7ce0-cc92-4db9-b25e-e897145f9492)
+_**Saran:** Untuk keandalan maksimal, upload screenshot ini langsung ke GitHub dengan metode drag-and-drop agar tidak ada masalah link rusak di masa depan._
 
 </div>
 
@@ -48,7 +52,7 @@
 * **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 * **State Management & Data Fetching**: [TanStack Query v5 (React Query)](https://tanstack.com/query/latest)
 * **Bahasa**: [TypeScript](https://www.typescriptlang.org/)
-* **Deployment**: [Vercel](https://vercel.com/) (atau sebutkan platform lain jika kamu deploy)
+* **Deployment**: [Vercel](https://ecommerce-public-api.vercel.app/)
 * **Linting & Formatting**: ESLint & Prettier
 
 ---
@@ -59,7 +63,7 @@ Untuk menjalankan proyek ini di komputermu, ikuti langkah-langkah berikut:
 
 1.  **Clone repository ini**
     ```bash
-    git clone https://github.com/djembaraa/ecommerce-publicAPI.git
+    git clone [https://github.com/djembaraa/ecommerce-publicAPI.git](https://github.com/djembaraa/ecommerce-publicAPI.git)
     ```
 
 2.  **Masuk ke direktori proyek**
