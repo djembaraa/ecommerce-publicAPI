@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# 🛍️ Katalog Produk - Submission Test bikinkonten.ai
 
-First, run the development server:
+<p>Sebuah aplikasi web katalog produk yang dibangun sebagai bagian dari proses seleksi Frontend Developer di bikinkonten.ai. Aplikasi ini menampilkan daftar produk dari API publik dengan fitur pencarian dan filter kategori secara real-time di sisi klien.</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<div align="center">
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-blue?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![TanStack Query](https://img.shields.io/badge/TanStack_Query-v5-FF4154?logo=react-query&logoColor=white)](https://tanstack.com/query/latest)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+</div>
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### ✨ Tampilan Aplikasi
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<div align="center">
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+*Tampilan Desktop & Fitur Filter*
 
-## Deploy on Vercel
+![Tampilan Desktop Aplikasi](https://i.imgur.com/uC5iX4K.png)
+_Ganti gambar ini dengan screenshot hasil karyamu! Ambil screenshot seluruh halaman._
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+</div>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<br>
+
+**Demo Responsif (GIF)**
+
+<div align="center">
+
+![Demo Responsif](https://i.imgur.com/vDeC50n.gif)
+_Tips: Buat GIF singkat yang menunjukkan tampilan mobile dan tablet. Kamu bisa menggunakan aplikasi seperti **ScreenToGif** (Windows) atau **GIPHY Capture** (Mac) untuk merekam layar._
+
+</div>
+
+---
+
+### 🚀 Fitur Utama
+
+-   **Browse Produk**: Menampilkan daftar produk dalam tampilan kartu (Card View) yang bersih dan modern.
+-   **Pemanggilan API Efisien**: Menggunakan **TanStack Query** untuk fetching, caching, dan sinkronisasi data dari server.
+-   **Loading & Error State**: Memberikan feedback visual kepada pengguna saat data sedang dimuat atau jika terjadi kegagalan API.
+-   **Filter Real-time**:
+    -   🔎 **Pencarian berdasarkan Nama Produk**: Filter produk secara dinamis saat pengguna mengetik.
+    -   🏷️ **Filter berdasarkan Kategori/Tag**: Memfilter produk berdasarkan tag yang dipilih dari dropdown.
+-   **Desain Responsif**: Tampilan yang dapat beradaptasi dengan baik di berbagai ukuran layar, dari mobile hingga desktop.
+-   **Modern UI/UX**: Didesain dengan **Tailwind CSS**, termasuk *hover effects* yang subtle dan layout yang intuitif.
+
+---
+
+### 🛠️ Teknologi yang Digunakan
+
+* **Framework**: [Next.js v15](https://nextjs.org/) (App Router & Turbopack)
+* **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+* **State Management & Data Fetching**: [TanStack Query v5 (React Query)](https://tanstack.com/query/latest)
+* **Bahasa**: [TypeScript](https://www.typescriptlang.org/)
+* **Deployment**: [Vercel](https://vercel.com/) (atau sebutkan platform lain jika kamu deploy)
+* **Linting & Formatting**: ESLint & Prettier
+
+---
+
+### ⚙️ Cara Menjalankan Proyek Secara Lokal
+
+Untuk menjalankan proyek ini di komputermu, ikuti langkah-langkah berikut:
+
+1.  **Clone repository ini**
+    ```bash
+    git clone https://github.com/djembaraa/ecommerce-publicAPI.git
+    ```
+
+2.  **Masuk ke direktori proyek**
+    ```bash
+    cd ecommerce-publicAPI
+    ```
+
+3.  **Install semua dependency yang dibutuhkan**
+    ```bash
+    npm install
+    ```
+
+4.  **Jalankan server development**
+    ```bash
+    npm run dev
+    ```
+
+5.  **Buka browser** dan kunjungi `http://localhost:3000`.
+
+---
+
+### 🧠 Konsep & Pembelajaran
+
+Proyek ini menjadi sarana untuk mengimplementasikan beberapa konsep penting dalam pengembangan frontend modern:
+
+1.  **Client-Side Data Fetching**: Menggunakan TanStack Query untuk mengelola siklus hidup data (fetching, caching, re-fetching) tanpa perlu state management manual yang kompleks (`useState` + `useEffect` boilerplate).
+2.  **Client-Side Filtering**: Logika filter diimplementasikan di sisi klien menggunakan `useMemo` untuk performa yang optimal, memastikan UI hanya diperbarui ketika data atau kriteria filter benar-benar berubah.
+3.  **Utility-First CSS**: Memanfaatkan kekuatan Tailwind CSS untuk membangun UI kustom dengan cepat tanpa meninggalkan file HTML/TSX.
+4.  **Component-Based Architecture**: Memecah UI menjadi komponen-komponen yang dapat digunakan kembali (reusable), seperti `ProductCard`, untuk kode yang lebih bersih dan terorganisir.
+
+---
+
+### 📬 Kontak
+
+Jika Anda memiliki pertanyaan atau feedback, jangan ragu untuk menghubungi saya.
+
+-   **Nama**: Djembar Arafat
+-   **Email**: djembararafat98@gmail.com
+-   **LinkedIn**: `https://www.linkedin.com/in/djembar-arafat-9a6602178/`
+
+Terima kasih telah mereview proyek saya!
