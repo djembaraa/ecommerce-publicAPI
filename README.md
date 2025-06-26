@@ -23,7 +23,7 @@
 
 *Tampilan Desktop & Fitur Filter*
 
-![Tampilan Desktop Aplikasi](https://i.imgur.com/uC5iX4K.png)
+![Tampilan Desktop Aplikasi](https://qrswqbfuolwuqvfsonia.supabase.co/storage/v1/object/public/asset//Screenshot%202025-06-26%20231018.png)
 _Ganti gambar ini dengan screenshot hasil karyamu! Ambil screenshot seluruh halaman._
 
 </div>
