@@ -33,7 +33,7 @@
 
 <div align="center">
 
-![Demo Responsif](https://i.imgur.com/Y4w2s5A.gif)
+![Demo Responsif](https://i.imgur.com/JqoXqbD.gif)
 
 </div>
 
