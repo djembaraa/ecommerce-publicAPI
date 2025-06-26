@@ -33,11 +33,7 @@
 
 <div align="center">
 
-![Demo Responsif]![Uploading djembaraa web front-3.gif…]()
-![Uploading djembaraa web front-3.gif…]()
-![Uploading djembaraa web front-3.gif…]()
-![Uploading djembaraa web front-3.gif…]()
-()
+![Demo Responsif](https://qrswqbfuolwuqvfsonia.supabase.co/storage/v1/object/public/asset//djembaraa-web%20front-3.gif)
 
 </div>
 
