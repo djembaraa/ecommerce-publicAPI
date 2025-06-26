@@ -24,7 +24,6 @@
 *Tampilan Desktop & Fitur Filter*
 
 ![Tampilan Desktop Aplikasi](https://qrswqbfuolwuqvfsonia.supabase.co/storage/v1/object/public/asset//Screenshot%202025-06-26%20231018.png)
-_Ganti gambar ini dengan screenshot hasil karyamu! Ambil screenshot seluruh halaman._
 
 </div>
 
@@ -34,8 +33,7 @@ _Ganti gambar ini dengan screenshot hasil karyamu! Ambil screenshot seluruh hala
 
 <div align="center">
 
-![Demo Responsif](https://i.imgur.com/vDeC50n.gif)
-_Tips: Buat GIF singkat yang menunjukkan tampilan mobile dan tablet. Kamu bisa menggunakan aplikasi seperti **ScreenToGif** (Windows) atau **GIPHY Capture** (Mac) untuk merekam layar._
+![Demo Responsif](https://qrswqbfuolwuqvfsonia.supabase.co/storage/v1/object/public/asset//djembaraa%20web%20front-1.gif)
 
 </div>
 
