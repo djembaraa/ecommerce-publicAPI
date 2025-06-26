@@ -1,103 +1,118 @@
-import Image from "next/image";
+// app/page.tsx
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
+import { useState, useMemo } from "react";
+import { Product } from "./types";
+import ProductCard from "./components/ProductCard";
+
+const getProducts = async (): Promise<Product[]> => {
+  // Ambil lebih banyak produk agar kita punya banyak tags untuk di-filter
+  const res = await fetch("https://dummyjson.com/products?limit=100");
+  if (!res.ok) {
+    throw new Error("Network response was not ok");
+  }
+  const data = await res.json();
+  return data.products;
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [filter, setFilter] = useState("");
+  // <-- BARU: State untuk menyimpan tag yang dipilih. 'all' berarti tidak ada filter tag.
+  const [selectedTag, setSelectedTag] = useState("all");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const { data, isLoading, isError, error } = useQuery<Product[]>({
+    queryKey: ["products"],
+    queryFn: getProducts,
+  });
+
+  // <-- BARU: Logika untuk mengumpulkan semua tag unik dari data
+  const allTags = useMemo(() => {
+    if (!data) return [];
+    // Gunakan Set untuk secara otomatis menangani duplikasi
+    const tagsSet = new Set<string>();
+    data.forEach((product) => {
+      product.tags.forEach((tag) => tagsSet.add(tag));
+    });
+    return Array.from(tagsSet); // Ubah kembali Set menjadi Array
+  }, [data]); // Hanya hitung ulang saat 'data' berubah
+
+  // <-- DIPERBARUI: Logika filter sekarang menggabungkan filter teks dan tag
+  const filteredProducts = useMemo(() => {
+    if (!data) return [];
+
+    let products = data;
+
+    // 1. Terapkan filter tag terlebih dahulu
+    if (selectedTag !== "all") {
+      products = products.filter((product) =>
+        product.tags.includes(selectedTag)
+      );
+    }
+
+    // 2. Kemudian, terapkan filter teks pada hasil filter tag
+    if (filter) {
+      products = products.filter((product) =>
+        product.title.toLowerCase().includes(filter.toLowerCase())
+      );
+    }
+
+    return products;
+  }, [data, filter, selectedTag]); // <-- BARU: Tambahkan selectedTag sebagai dependency
+
+  if (isLoading) {
+    return <main className="p-8 text-center">Loading...</main>;
+  }
+
+  if (isError) {
+    return <main className="p-8 text-center">Error: {error.message}</main>;
+  }
+
+  return (
+    <main className="p-4 sm:p-6 md:p-8">
+      <div className="max-w-5xl mx-auto">
+        {" "}
+        {/* Lebarkan sedikit max-width */}
+        <h1 className="text-3xl font-bold mb-6 text-center">Product Catalog</h1>
+        {/* <-- BARU: Kontainer untuk semua filter */}
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          {/* Input untuk Filtering Teks */}
+          <input
+            type="text"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            placeholder="Search product by title..."
+            className="w-full sm:w-2/3 p-2 border border-gray-300 rounded-md shadow-sm"
+          />
+
+          {/* <-- BARU: Dropdown untuk Filtering Tag */}
+          <select
+            value={selectedTag}
+            onChange={(e) => setSelectedTag(e.target.value)}
+            className="w-full sm:w-1/3 p-2 border border-gray-300 text-gray-700 rounded-md shadow-sm bg-white"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <option value="all">All Tags</option>
+            {allTags.map((tag) => (
+              <option key={tag} value={tag} className="capitalize">
+                {tag}
+              </option>
+            ))}
+          </select>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        {/* Tampilan Grid untuk Card */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          ) : (
+            // <-- BARU: Pesan jika tidak ada hasil
+            <p className="col-span-full text-center text-gray-500">
+              No products found. Try adjusting your filters.
+            </p>
+          )}
+        </div>
+      </div>
+    </main>
   );
 }
