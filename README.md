@@ -27,7 +27,8 @@
 *Tampilan Desktop & Fitur Filter*
 
 ![Tampilan Desktop Aplikasi](https://github.com/user-attachments/assets/5e1e7ce0-cc92-4db9-b25e-e897145f9492)
-_**Saran:** Untuk keandalan maksimal, upload screenshot ini langsung ke GitHub dengan metode drag-and-drop agar tidak ada masalah link rusak di masa depan._
+
+![Tampilan Desktop Aplikasi](https://qrswqbfuolwuqvfsonia.supabase.co/storage/v1/object/public/asset//Screenshot%202025-06-26%20231018.png)
 
 </div>
 
