@@ -1,13 +1,13 @@
-import { Smartphone, Watch, Camera, Headphones, Laptop, Gamepad2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Sparkles, Brush, FlaskConical, Scissors, Bath, ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function CategoryList() {
   const categories = [
-    { name: "Phones", icon: Smartphone },
-    { name: "Smart Watches", icon: Watch },
-    { name: "Cameras", icon: Camera },
-    { name: "Headphones", icon: Headphones },
-    { name: "Computers", icon: Laptop },
-    { name: "Gaming", icon: Gamepad2 },
+    { name: "Skincare", icon: Sparkles },
+    { name: "Makeup", icon: Brush },
+    { name: "Fragrances", icon: FlaskConical },
+    { name: "Hair Care", icon: Scissors },
+    { name: "Bath & Body", icon: Bath },
+    { name: "Accessories", icon: ShoppingBag },
   ];
 
   return (

@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🛍️ Katalog Produk - Submission Test bikinkonten.ai
+# 🛍️ Katalog Produk - E-Commerce UI (Cyber Design)
 
-<p>Sebuah aplikasi web katalog produk yang dibangun sebagai bagian dari proses seleksi Frontend Developer di bikinkonten.ai. Aplikasi ini menampilkan daftar produk dari API publik dengan fitur pencarian dan filter kategori secara real-time di sisi klien.</p>
+<p>Aplikasi web katalog produk yang dibangun menggunakan Next.js 15 dan TanStack Query. Proyek ini awalnya dibuat sebagai bagian dari proses seleksi Frontend Developer di bikinkonten.ai, dan baru-baru ini <b>telah dirombak total secara UI/UX</b> untuk mengadopsi desain e-commerce premium ala "Cyber", menampilkan tata letak modern, hero section yang imersif, dan komponen desain yang solid.</p>
 
 ### 🌐 **[Lihat Live Demo](https://ecommerce-public-api.vercel.app/)** 🌐
 
@@ -20,29 +20,25 @@
 
 ---
 
-### ✨ Tampilan Aplikasi
+### ✨ Tampilan Aplikasi Terkini
 
-<div align="center">
-
-*Tampilan Desktop & Fitur Filter*
-
-![Tampilan Desktop Aplikasi](https://qrswqbfuolwuqvfsonia.supabase.co/storage/v1/object/public/asset//Screenshot%202025-06-26%20231018.png)
-
-
-</div>
+Aplikasi telah diperbarui dengan antarmuka yang sangat modern:
+- **Dark Mode Hero Section**: Presentasi produk unggulan ala Apple/PlayStation.
+- **Navigasi Premium**: Navbar yang elegan dilengkapi ikon fungsional.
+- **Kategori Dinamis**: Tampilan grid kategori yang lebih bersih.
+- **Kartu Produk Estetik**: Desain *Product Card* yang ditingkatkan dengan tombol aksi dan wishlist.
 
 ---
 
 ### 🚀 Fitur Utama
 
--   **Browse Produk**: Menampilkan daftar produk dalam tampilan kartu (Card View) yang bersih dan modern.
--   **Pemanggilan API Efisien**: Menggunakan **TanStack Query** untuk fetching, caching, dan sinkronisasi data dari server.
--   **Loading & Error State**: Memberikan feedback visual kepada pengguna saat data sedang dimuat atau jika terjadi kegagalan API.
--   **Filter Real-time**:
-    -   🔎 **Pencarian berdasarkan Nama Produk**: Filter produk secara dinamis saat pengguna mengetik.
-    -   🏷️ **Filter berdasarkan Kategori/Tag**: Memfilter produk berdasarkan tag yang dipilih dari dropdown.
--   **Desain Responsif**: Tampilan yang dapat beradaptasi dengan baik di berbagai ukuran layar, dari mobile hingga desktop.
--   **Modern UI/UX**: Didesain dengan **Tailwind CSS**, termasuk *hover effects* yang subtle dan layout yang intuitif.
+-   **Premium UI/UX Redesign**: Desain frontend yang memanjakan mata, mengadopsi standar e-commerce kelas dunia (Cyber theme).
+-   **Pemanggilan API Efisien**: Menggunakan **TanStack Query** untuk fetching, caching, dan sinkronisasi data dari `dummyjson.com` secara mulus.
+-   **Filter Real-time (Client-Side)**:
+    -   🔎 **Pencarian berdasarkan Judul**: Menemukan produk secara instan.
+    -   🏷️ **Filter Tag**: Mengkategorikan data secara otomatis.
+-   **Komponen Modular**: Struktur *codebase* telah dipisah menjadi komponen fungsional yang mudah di-*maintenance* (`Navbar`, `Hero`, `CategoryList`, `ProductCard`, `Footer`, `Banner`).
+-   **Desain Responsif**: Layar dapat menyesuaikan tampilan desktop maupun mobile secara fleksibel.
 
 ---
 
@@ -51,9 +47,9 @@
 * **Framework**: [Next.js v15](https://nextjs.org/) (App Router & Turbopack)
 * **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 * **State Management & Data Fetching**: [TanStack Query v5 (React Query)](https://tanstack.com/query/latest)
+* **Ikon**: [Lucide React](https://lucide.dev/)
 * **Bahasa**: [TypeScript](https://www.typescriptlang.org/)
 * **Deployment**: [Vercel](https://ecommerce-public-api.vercel.app/)
-* **Linting & Formatting**: ESLint & Prettier
 
 ---
 
@@ -63,7 +59,7 @@ Untuk menjalankan proyek ini di komputermu, ikuti langkah-langkah berikut:
 
 1.  **Clone repository ini**
     ```bash
-    git clone [https://github.com/djembaraa/ecommerce-publicAPI.git](https://github.com/djembaraa/ecommerce-publicAPI.git)
+    git clone https://github.com/djembaraa/ecommerce-publicAPI.git
     ```
 
 2.  **Masuk ke direktori proyek**
@@ -87,12 +83,11 @@ Untuk menjalankan proyek ini di komputermu, ikuti langkah-langkah berikut:
 
 ### 🧠 Konsep & Pembelajaran
 
-Proyek ini menjadi sarana untuk mengimplementasikan beberapa konsep penting dalam pengembangan frontend modern:
+Proyek ini mendemonstrasikan integrasi antara performa tinggi (*fetching* yang dioptimalkan) dan estetika visual modern:
 
-1.  **Client-Side Data Fetching**: Menggunakan TanStack Query untuk mengelola siklus hidup data (fetching, caching, re-fetching) tanpa perlu state management manual yang kompleks (`useState` + `useEffect` boilerplate).
-2.  **Client-Side Filtering**: Logika filter diimplementasikan di sisi klien menggunakan `useMemo` untuk performa yang optimal, memastikan UI hanya diperbarui ketika data atau kriteria filter benar-benar berubah.
-3.  **Utility-First CSS**: Memanfaatkan kekuatan Tailwind CSS untuk membangun UI kustom dengan cepat tanpa meninggalkan file HTML/TSX.
-4.  **Component-Based Architecture**: Memecah UI menjadi komponen-komponen yang dapat digunakan kembali (reusable), seperti `ProductCard`, untuk kode yang lebih bersih dan terorganisir.
+1.  **Arsitektur Komponen Bersih**: Pemisahan komponen UI yang kompleks dari logika manipulasi data.
+2.  **Client-Side Data Fetching**: Menggunakan TanStack Query untuk menghindari kerumitan `useEffect` dan `useState` manual.
+3.  **Modern CSS Utilities**: Memanfaatkan Tailwind v4 tanpa konfigurasi rumit, menerapkan konsep responsif murni.
 
 ---
 
@@ -102,6 +97,6 @@ Jika Anda memiliki pertanyaan atau feedback, jangan ragu untuk menghubungi saya.
 
 -   **Nama**: Djembar Arafat
 -   **Email**: djembararafat98@gmail.com
--   **LinkedIn**: `https://www.linkedin.com/in/djembar-arafat-9a6602178/`
+-   **LinkedIn**: [Djembar Arafat](https://www.linkedin.com/in/djembar-arafat-9a6602178/)
 
 Terima kasih telah mereview proyek saya!

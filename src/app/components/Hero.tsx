@@ -7,15 +7,15 @@ export default function Hero() {
       {/* Main Container */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row">
         
-        {/* Left Side: Main Feature (iPhone) */}
+        {/* Left Side: Main Feature (Perfume) */}
         <div className="md:w-1/2 flex items-center justify-center p-8 md:p-16 lg:px-24">
           <div className="max-w-md">
-            <h3 className="text-gray-400 font-semibold mb-2">Pro.Beyond.</h3>
+            <h3 className="text-gray-400 font-semibold mb-2">Premium Collection.</h3>
             <h1 className="text-5xl md:text-7xl font-light tracking-tight mb-4">
-              IPhone 14 <span className="font-bold">Pro</span>
+              Luxury <span className="font-bold">Essence</span>
             </h1>
             <p className="text-gray-400 mb-8">
-              Created to change everything for the better. For everyone.
+              Discover the true essence of pure beauty and elegance. Created to make you shine.
             </p>
             <Link 
               href="#products" 
@@ -29,51 +29,47 @@ export default function Hero() {
         {/* Right Side: Grid of other products */}
         <div className="md:w-1/2 bg-[#111111] border-l border-gray-800">
           
-          {/* Top Half (Playstation) */}
+          {/* Top Half (Skincare) */}
           <div className="h-1/2 border-b border-gray-800 flex items-center bg-white text-black p-8 relative overflow-hidden">
             <div className="relative z-10 w-2/3">
-              <h2 className="text-4xl font-bold mb-2">Playstation 5</h2>
+              <h2 className="text-4xl font-bold mb-2">Advanced Skincare</h2>
               <p className="text-gray-500 mb-4 text-sm">
-                Incredibly powerful CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.
+                Revitalize your skin with our deeply hydrating and nourishing formulas. Feel the ultimate glow.
               </p>
-            </div>
-            {/* Placeholder for PS5 Image */}
-            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/3 h-full bg-gray-200">
-              {/* Add actual image if available */}
             </div>
           </div>
 
           {/* Bottom Half Grid */}
           <div className="h-1/2 flex">
             
-            {/* Bottom Left: AirPods & Vision Pro */}
+            {/* Bottom Left: Makeup & Bath */}
             <div className="w-1/2 border-r border-gray-800 flex flex-col">
               
-              {/* AirPods */}
+              {/* Makeup */}
               <div className="h-1/2 border-b border-gray-800 bg-[#ededed] text-black p-6 flex flex-col justify-center relative overflow-hidden">
                  <div className="relative z-10">
-                   <h3 className="text-2xl font-light">Apple<br/><span className="font-bold">AirPods Max</span></h3>
-                   <p className="text-gray-500 text-xs mt-2">Computational audio. Listen, it's powerful</p>
+                   <h3 className="text-2xl font-light">Flawless<br/><span className="font-bold">Makeup</span></h3>
+                   <p className="text-gray-500 text-xs mt-2">Enhance your natural beauty flawlessly.</p>
                  </div>
-                 <div className="absolute right-[-20%] bottom-[-20%] w-24 h-24 bg-gray-300 rounded-full blur-2xl"></div>
+                 <div className="absolute right-[-20%] bottom-[-20%] w-24 h-24 bg-[#ffb6c1] rounded-full blur-2xl opacity-50"></div>
               </div>
               
-              {/* Vision Pro */}
+              {/* Bath */}
               <div className="h-1/2 bg-[#353535] p-6 flex flex-col justify-center relative overflow-hidden">
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-light">Apple<br/><span className="font-bold">Vision Pro</span></h3>
-                  <p className="text-gray-400 text-xs mt-2">An immersive way to experience entertainment</p>
+                  <h3 className="text-2xl font-light">Bath &<br/><span className="font-bold">Body Care</span></h3>
+                  <p className="text-gray-400 text-xs mt-2">A soothing experience for everyday luxury.</p>
                 </div>
               </div>
 
             </div>
 
-            {/* Bottom Right: Macbook */}
+            {/* Bottom Right: Signature Perfumes */}
             <div className="w-1/2 bg-[#ededed] text-black p-8 flex flex-col justify-center relative overflow-hidden">
               <div className="relative z-10">
-                <h2 className="text-4xl font-light mb-2">Macbook <span className="font-bold">Air</span></h2>
+                <h2 className="text-4xl font-light mb-2">Signature <span className="font-bold">Scents</span></h2>
                 <p className="text-gray-500 text-xs mb-4">
-                  The new 15-inch MacBook Air makes room for more of what you love with a spacious Liquid Retina display.
+                  Find the perfect fragrance that matches your unique personality and style.
                 </p>
                 <Link 
                   href="#products" 
