@@ -14,7 +14,11 @@ const getProducts = async (): Promise<Product[]> => {
     throw new Error("Network response was not ok");
   }
   const data = await res.json();
-  return data.products;
+  // Filter only beauty-related categories so tech items don't appear
+  const beautyCategories = ["beauty", "fragrances", "skin-care"];
+  return data.products.filter((product: Product) => 
+    beautyCategories.includes(product.category)
+  );
 };
 
 export default function Home() {
@@ -42,7 +46,18 @@ export default function Home() {
 
   const filteredProducts = useMemo(() => {
     if (!data) return [];
-    let products = data;
+    let products = [...data];
+
+    // Dummy logic to make the tabs show different items based on user request
+    if (activeTab === "Bestseller") {
+      products.sort((a, b) => b.rating - a.rating);
+    } else if (activeTab === "Featured Products") {
+      // Just an arbitrary sort to make it look different (e.g. by highest price)
+      products.sort((a, b) => b.price - a.price);
+    } else {
+      // New Arrival (default), just show as is or reversed
+      products.reverse();
+    }
 
     if (selectedTag !== "all") {
       products = products.filter((product) =>
@@ -56,11 +71,11 @@ export default function Home() {
       );
     }
     return products;
-  }, [data, filter, selectedTag]);
+  }, [data, filter, selectedTag, activeTab]);
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [filter, selectedTag]);
+  }, [filter, selectedTag, activeTab]);
 
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage;
