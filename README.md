@@ -2,9 +2,9 @@
 
 # 🛍️ Cyber Beauty - Premium E-Commerce Catalog
 
-<p>Sebuah aplikasi web e-commerce kecantikan (kosmetik, skincare, parfum) yang dibangun menggunakan <b>Next.js 15</b> dan <b>TanStack Query</b>. Proyek ini awalnya dibuat sebagai bagian dari proses seleksi Frontend Developer di bikinkonten.ai, dan telah <b>dirombak total secara UI/UX</b> untuk mengadopsi desain premium kelas dunia ala "Cyber", dengan navigasi lengkap dan fitur rendering dinamis.</p>
+<p>A premium beauty e-commerce web application built with <b>Next.js 15</b> and <b>TanStack Query</b>. Originally created as part of a Frontend Developer selection process at bikinkonten.ai, this project has been <b>completely redesigned</b> to adopt a world-class "Cyber" premium e-commerce theme, featuring modern layouts, an immersive hero section, and comprehensive dynamic routing.</p>
 
-### 🌐 **[Lihat Live Demo](https://ecommerce-public-api.vercel.app/)** 🌐
+### 🌐 **[View Live Demo](https://ecommerce-public-api.vercel.app/)** 🌐
 
 </div>
 
@@ -19,92 +19,92 @@
 
 ---
 
-### ✨ Tampilan & Tema Aplikasi
+### ✨ Application UI & Theme
 
-Aplikasi telah diperbarui dengan tema **Cosmetics & Beauty** yang mewah:
-- **Dark Mode Hero Section**: Menampilkan *Luxury Essence* dan *Advanced Skincare* layaknya etalase brand papan atas.
-- **Kategori Dinamis**: Ikon spesifik untuk Skincare, Makeup, Fragrances, Hair Care, Bath & Body menggunakan `lucide-react`.
-- **Kartu Produk Estetik**: Desain *Product Card* minimalis yang berfokus pada visual produk dengan tombol interaktif.
-
----
-
-### 🚀 Fitur & Struktur Halaman Baru
-
--   **Pemanggilan API Efisien**: Menggunakan **TanStack Query** untuk mengambil data produk kecantikan dari `dummyjson.com` secara *real-time* dan *cached*.
--   **Filter Klien (Client-Side)**: Pencarian dan pemfilteran kategori produk yang sangat responsif tanpa membebani server.
--   **Navigasi Lengkap (Next.js App Router)**:
-    -   `/` : Halaman Utama (Katalog Produk & Filter)
-    -   `/about`, `/contact`, `/blog` : Halaman Informasi Perusahaan
-    -   `/cart`, `/wishlist` : Halaman interaksi produk belanja
-    -   `/login` : Halaman Autentikasi Pengguna
--   **Rute Dinamis (Dynamic Routes)**:
-    -   `/services/[slug]` : Menangani berbagai tautan layanan (*Loyalty Program, VIP Memberships, dll*) dari Footer secara dinamis.
-    -   `/help/[slug]` : Menangani tautan bantuan pelanggan (*FAQ, Shipping, Returns, dll*).
+The application has been upgraded with a luxurious **Cosmetics & Beauty** theme:
+- **Dark Mode Hero Section**: Showcasing *Luxury Essence* and *Advanced Skincare* like a high-end brand storefront.
+- **Dynamic Categories**: Specific iconography for Skincare, Makeup, Fragrances, Hair Care, and Bath & Body using `lucide-react`.
+- **Aesthetic Product Cards**: Minimalist product card design focusing on product visuals, enhanced with interactive wishlist and cart buttons.
 
 ---
 
-### 🛠️ Teknologi yang Digunakan
+### 🚀 Key Features & Routing Structure
+
+-   **Efficient API Fetching**: Utilizes **TanStack Query** to fetch, cache, and synchronize beauty product data from `dummyjson.com` in real-time.
+-   **Client-Side Filtering**: Highly responsive category filtering and product search that executes instantly without overloading the server.
+-   **Comprehensive Navigation (Next.js App Router)**:
+    -   `/` : Main Page (Product Catalog & Filters)
+    -   `/about`, `/contact`, `/blog` : Company Information Pages
+    -   `/cart`, `/wishlist` : Shopping interaction pages
+    -   `/login` : User Authentication Page
+-   **Dynamic Routes**:
+    -   `/services/[slug]` : Dynamically handles various service links (*Loyalty Program, VIP Memberships, etc.*) from the Footer.
+    -   `/help/[slug]` : Handles customer assistance links (*FAQ, Shipping, Returns, etc.*).
+
+---
+
+### 🛠️ Technologies Used
 
 * **Framework**: [Next.js v15](https://nextjs.org/) (App Router & Turbopack)
 * **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 * **Data Fetching**: [TanStack Query v5 (React Query)](https://tanstack.com/query/latest)
-* **Ikonografi**: [Lucide React](https://lucide.dev/)
-* **Bahasa**: [TypeScript](https://www.typescriptlang.org/)
+* **Iconography**: [Lucide React](https://lucide.dev/)
+* **Language**: [TypeScript](https://www.typescriptlang.org/)
 * **Deployment**: [Vercel](https://ecommerce-public-api.vercel.app/)
 
 ---
 
-### ⚙️ Panduan Instalasi & Menjalankan Proyek
+### ⚙️ Installation & Setup Guide
 
-Jika Anda ingin menjalankan atau mengembangkan proyek ini di komputer lokal, ikuti langkah-langkah mudah berikut:
+To run or develop this project on your local machine, follow these simple steps:
 
-#### 1. Persyaratan Sistem
-Pastikan Anda sudah menginstal **Node.js** (minimal versi 18.x) dan **npm** di komputer Anda.
+#### 1. System Requirements
+Make sure you have **Node.js** (minimum version 18.x) and **npm** installed on your computer.
 
-#### 2. Clone Repository
-Buka terminal/command prompt, dan jalankan perintah berikut untuk mengunduh kode sumber:
+#### 2. Clone the Repository
+Open your terminal or command prompt and run the following command to download the source code:
 ```bash
 git clone https://github.com/djembaraa/ecommerce-publicAPI.git
 ```
 
-#### 3. Masuk ke Direktori Proyek
+#### 3. Navigate to the Project Directory
 ```bash
 cd ecommerce-publicAPI
 ```
 
-#### 4. Instalasi Dependency
-Instal seluruh paket yang dibutuhkan (seperti Next.js, Tailwind, TanStack, dan Lucide):
+#### 4. Install Dependencies
+Install all required packages (including Next.js, Tailwind, TanStack, and Lucide):
 ```bash
 npm install
 ```
 
-#### 5. Jalankan Server Development
-Jalankan aplikasi di mode *development* (Turbopack diaktifkan untuk *loading* lebih cepat):
+#### 5. Start the Development Server
+Run the application in development mode (Turbopack enabled for faster loading):
 ```bash
 npm run dev
 ```
 
-#### 6. Akses Aplikasi
-Buka browser Anda dan kunjungi tautan berikut:
+#### 6. Access the Application
+Open your browser and visit the following link:
 **[http://localhost:3000](http://localhost:3000)**
 
 ---
 
-### 🧠 Konsep & Arsitektur
+### 🧠 Core Concepts & Architecture
 
-Proyek ini dibangun dengan mengedepankan performa tinggi dan skalabilitas UI:
-1.  **Arsitektur Komponen Modular**: Pemisahan komponen UI yang kompleks (`Navbar`, `Hero`, `CategoryList`) untuk kemudahan pemeliharaan (*maintenance*).
-2.  **State Management Bebas Repot**: Penggunaan TanStack Query menyingkirkan kebutuhan `useEffect` dan `useState` yang berantakan, dan secara otomatis menangani status *loading*, *error*, dan *caching*.
-3.  **Dynamic Rendering Berbasis Folder**: Memanfaatkan keunggulan rute Next.js 15 (`app/services/[slug]`) untuk meminimalisir pembuatan file statis yang berulang.
+This project is built prioritizing high performance and UI scalability:
+1.  **Modular Component Architecture**: Separation of complex UI components (`Navbar`, `Hero`, `CategoryList`) for ease of maintenance.
+2.  **Hassle-free State Management**: The use of TanStack Query eliminates the need for messy `useEffect` and `useState` hooks, automatically handling loading, error, and caching states.
+3.  **Folder-based Dynamic Rendering**: Leveraging the power of Next.js 15 routing (`app/services/[slug]`) to minimize repetitive static file creation.
 
 ---
 
-### 📬 Kontak & Dukungan
+### 📬 Contact & Support
 
-Jika Anda memiliki pertanyaan, saran, atau masukan tentang struktur kode, silakan hubungi saya melalui:
+If you have any questions, suggestions, or feedback regarding the codebase, please feel free to reach out:
 
--   **Nama**: Djembar Arafat
+-   **Name**: Djembar Arafat
 -   **Email**: djembararafat98@gmail.com
 -   **LinkedIn**: [Djembar Arafat](https://www.linkedin.com/in/djembar-arafat-9a6602178/)
 
-Terima kasih telah menjelajahi proyek **Cyber Beauty**!
+Thank you for exploring the **Cyber Beauty** project!
