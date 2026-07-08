@@ -7,12 +7,12 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="bg-[#f6f6f6] rounded-xl p-6 flex flex-col items-center relative transition-transform hover:scale-105 group">
       {/* Wishlist Button */}
-      <Link href="/wishlist" className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors">
+      <Link href="/wishlist" className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors z-10">
         <Heart className="h-6 w-6" />
       </Link>
 
-      {/* Image */}
-      <div className="relative w-40 h-40 mb-6 mt-4">
+      {/* Image wrapped in Link to detail page */}
+      <Link href={`/product/${product.id}`} className="relative w-40 h-40 mb-6 mt-4 block cursor-pointer">
         <Image
           src={product.thumbnail}
           alt={product.title}
@@ -20,13 +20,15 @@ export default function ProductCard({ product }: { product: Product }) {
           objectFit="contain"
           className="mix-blend-multiply"
         />
-      </div>
+      </Link>
 
       {/* Content */}
       <div className="w-full text-center flex-grow flex flex-col justify-end">
-        <h3 className="text-lg font-medium text-black mb-4 truncate w-full" title={product.title}>
-          {product.title}
-        </h3>
+        <Link href={`/product/${product.id}`}>
+          <h3 className="text-lg font-medium text-black mb-4 truncate w-full hover:underline cursor-pointer" title={product.title}>
+            {product.title}
+          </h3>
+        </Link>
         
         <p className="text-xl font-bold text-black mb-6">
           ${product.price}
