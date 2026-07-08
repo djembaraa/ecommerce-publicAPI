@@ -1,46 +1,39 @@
-// components/ProductCard.tsx
 import { Product } from "../types";
-import Image from "next/image"; // Gunakan Image component dari Next.js untuk optimasi
+import Image from "next/image";
+import { Heart } from "lucide-react";
 
-// Komponen ini menerima satu 'product' sebagai properti (prop)
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
-      {/* Gambar Produk */}
-      <div className="relative w-full h-48">
+    <div className="bg-[#f6f6f6] rounded-xl p-6 flex flex-col items-center relative transition-transform hover:scale-105 group">
+      {/* Wishlist Button */}
+      <button className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors">
+        <Heart className="h-6 w-6" />
+      </button>
+
+      {/* Image */}
+      <div className="relative w-40 h-40 mb-6 mt-4">
         <Image
           src={product.thumbnail}
           alt={product.title}
           layout="fill"
-          objectFit="cover"
+          objectFit="contain"
+          className="mix-blend-multiply"
         />
       </div>
 
-      {/* Konten Teks */}
-      <div className="p-4">
-        <p className="text-sm  text-blue-600 mb-1">{product.category}</p>
-        <h3 className="text-lg font-bold truncate text-gray-700">
+      {/* Content */}
+      <div className="w-full text-center flex-grow flex flex-col justify-end">
+        <h3 className="text-lg font-medium text-black mb-4 truncate w-full" title={product.title}>
           {product.title}
         </h3>
-        <p className="text-gray-700 mt-2 h-30 overflow-y-auto text-ellipsis">
-          {product.description}
+        
+        <p className="text-xl font-bold text-black mb-6">
+          ${product.price}
         </p>
 
-        {/* Info Harga */}
-        <div className="flex items-baseline justify-between mt-4">
-          <p className="text-xl font-semibold text-gray-700">
-            ${product.price}
-          </p>
-          <p className="text-sm text-red-500 line-through">
-            $
-            {(product.price / (1 - product.discountPercentage / 100)).toFixed(
-              2
-            )}
-          </p>
-        </div>
-
-        {/* Rating */}
-        <div className="mt-2 text-yellow-700">Rating: {product.rating} ★</div>
+        <button className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+          Buy Now
+        </button>
       </div>
     </div>
   );
