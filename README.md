@@ -1,14 +1,10 @@
 <div align="center">
 
-# 🛍️ Cyber Beauty - Premium E-Commerce Catalog
+# Cyber Beauty - Premium E-Commerce Platform
 
-<p>A premium beauty e-commerce web application built with <b>Next.js 15</b> and <b>TanStack Query</b>. Originally created as part of a Frontend Developer selection process at bikinkonten.ai, this project has been <b>completely redesigned</b> to adopt a world-class "Cyber" premium e-commerce theme, featuring modern layouts, an immersive hero section, and comprehensive dynamic routing.</p>
+<p>A sophisticated beauty e-commerce web application built with <b>Next.js 15</b> and <b>TanStack Query</b>. Originally created as part of a Frontend Developer selection process at bikinkonten.ai, this project has been significantly expanded and redesigned into a premium "Cyber Beauty" storefront, featuring modern layouts, an immersive user interface, and comprehensive dynamic routing architecture.</p>
 
-### 🌐 **[View Live Demo](https://ecommerce-public-api.vercel.app/)** 🌐
-
-</div>
-
-<div align="center">
+### **[View Live Demo](https://ecommerce-public-api.vercel.app/)**
 
 [![Vercel Status](https://img.shields.io/badge/Vercel-live-green?logo=vercel)](https://ecommerce-public-api.vercel.app/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
@@ -19,92 +15,96 @@
 
 ---
 
-### ✨ Application UI & Theme
+## Application Architecture & Features
 
-The application has been upgraded with a luxurious **Cosmetics & Beauty** theme:
-- **Dark Mode Hero Section**: Showcasing *Luxury Essence* and *Advanced Skincare* like a high-end brand storefront.
-- **Dynamic Categories**: Specific iconography for Skincare, Makeup, Fragrances, Hair Care, and Bath & Body using `lucide-react`.
-- **Aesthetic Product Cards**: Minimalist product card design focusing on product visuals, enhanced with interactive wishlist and cart buttons.
+This platform emphasizes high performance, scalability, and an elevated user experience.
+
+### Core Capabilities
+- **Advanced Data Fetching**: Utilizes **TanStack Query (React Query)** to fetch, cache, and synchronize beauty product data from the `dummyjson.com` API seamlessly.
+- **Client-Side Data Manipulation**: Instantaneous category filtering, dynamic sorting (Bestseller, Featured, New Arrival), and search functionalities that execute without server roundtrips.
+- **Image Optimization**: Fully configured Next.js `<Image />` components integrated with external CDNs (Unsplash and DummyJSON) for high-resolution, lazy-loaded visual assets.
+
+### Comprehensive Routing Structure (Next.js App Router)
+The project utilizes the Next.js App Router paradigm to organize a complete e-commerce flow:
+
+**Primary Routes:**
+- `/` : Product Catalog & Landing Page (Features dynamic tabs and filtering)
+- `/product/[id]` : Dynamic Single Product Detail Page
+- `/cart` : Simulated Shopping Cart with order summary and subtotal calculations
+- `/wishlist` : User's saved items grid
+
+**Corporate & Information Routes:**
+- `/about` : Editorial-style brand manifesto
+- `/blog` : Magazine-layout beauty journal
+- `/contact` : Split-screen contact form and studio information
+- `/login` : Premium split-screen authentication portal
+
+**Dynamic Infrastructure Routes:**
+- `/services/[slug]` : Programmatically handles all service-related links (Loyalty Program, VIP Memberships, etc.) from the footer layout.
+- `/help/[slug]` : Generates support documents (FAQ, Shipping, Returns) on demand.
 
 ---
 
-### 🚀 Key Features & Routing Structure
+## Technical Stack
 
--   **Efficient API Fetching**: Utilizes **TanStack Query** to fetch, cache, and synchronize beauty product data from `dummyjson.com` in real-time.
--   **Client-Side Filtering**: Highly responsive category filtering and product search that executes instantly without overloading the server.
--   **Comprehensive Navigation (Next.js App Router)**:
-    -   `/` : Main Page (Product Catalog & Filters)
-    -   `/about`, `/contact`, `/blog` : Company Information Pages
-    -   `/cart`, `/wishlist` : Shopping interaction pages
-    -   `/login` : User Authentication Page
--   **Dynamic Routes**:
-    -   `/services/[slug]` : Dynamically handles various service links (*Loyalty Program, VIP Memberships, etc.*) from the Footer.
-    -   `/help/[slug]` : Handles customer assistance links (*FAQ, Shipping, Returns, etc.*).
-
----
-
-### 🛠️ Technologies Used
-
-* **Framework**: [Next.js v15](https://nextjs.org/) (App Router & Turbopack)
+* **Framework**: [Next.js v15](https://nextjs.org/) (App Router)
 * **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-* **Data Fetching**: [TanStack Query v5 (React Query)](https://tanstack.com/query/latest)
+* **State Management**: [TanStack Query v5](https://tanstack.com/query/latest)
 * **Iconography**: [Lucide React](https://lucide.dev/)
 * **Language**: [TypeScript](https://www.typescriptlang.org/)
-* **Deployment**: [Vercel](https://ecommerce-public-api.vercel.app/)
+* **Deployment**: [Vercel](https://vercel.com/)
 
 ---
 
-### ⚙️ Installation & Setup Guide
+## Installation & Setup Guide
 
-To run or develop this project on your local machine, follow these simple steps:
+To run or develop this project on your local machine, follow these steps:
 
-#### 1. System Requirements
-Make sure you have **Node.js** (minimum version 18.x) and **npm** installed on your computer.
+### 1. Prerequisites
+Ensure you have **Node.js** (minimum version 18.x) and **npm** installed on your system.
 
-#### 2. Clone the Repository
-Open your terminal or command prompt and run the following command to download the source code:
+### 2. Clone the Repository
+Open your terminal and clone the source code:
 ```bash
 git clone https://github.com/djembaraa/ecommerce-publicAPI.git
 ```
 
-#### 3. Navigate to the Project Directory
+### 3. Navigate to the Directory
 ```bash
 cd ecommerce-publicAPI
 ```
 
-#### 4. Install Dependencies
-Install all required packages (including Next.js, Tailwind, TanStack, and Lucide):
+### 4. Install Dependencies
+Install all required packages:
 ```bash
 npm install
 ```
 
-#### 5. Start the Development Server
-Run the application in development mode (Turbopack enabled for faster loading):
+### 5. Start the Development Server
+Run the application in development mode:
 ```bash
 npm run dev
 ```
 
-#### 6. Access the Application
-Open your browser and visit the following link:
+### 6. Access the Application
+Open your browser and navigate to:
 **[http://localhost:3000](http://localhost:3000)**
 
 ---
 
-### 🧠 Core Concepts & Architecture
+## Design Philosophy
 
-This project is built prioritizing high performance and UI scalability:
-1.  **Modular Component Architecture**: Separation of complex UI components (`Navbar`, `Hero`, `CategoryList`) for ease of maintenance.
-2.  **Hassle-free State Management**: The use of TanStack Query eliminates the need for messy `useEffect` and `useState` hooks, automatically handling loading, error, and caching states.
-3.  **Folder-based Dynamic Rendering**: Leveraging the power of Next.js 15 routing (`app/services/[slug]`) to minimize repetitive static file creation.
+The application has been explicitly designed with a luxurious **Cosmetics & Beauty** theme in mind:
+- **Dark Mode Aesthetics**: Implementation of high-contrast black and white palettes to simulate a high-end storefront.
+- **Editorial Typography**: Utilizing clean, sans-serif fonts structured similarly to modern fashion magazines.
+- **Curated Content**: Integration of professional, royalty-free photography from Unsplash to elevate the visual standard of static pages.
 
 ---
 
-### 📬 Contact & Support
+## Contact & Support
 
-If you have any questions, suggestions, or feedback regarding the codebase, please feel free to reach out:
+For inquiries, suggestions, or technical feedback regarding this repository, please reach out:
 
--   **Name**: Djembar Arafat
--   **Email**: djembararafat98@gmail.com
--   **LinkedIn**: [Djembar Arafat](https://www.linkedin.com/in/djembar-arafat-9a6602178/)
-
-Thank you for exploring the **Cyber Beauty** project!
+- **Name**: Djembar Arafat
+- **Email**: djembararafat98@gmail.com
+- **LinkedIn**: [Djembar Arafat](https://www.linkedin.com/in/djembar-arafat-9a6602178/)
