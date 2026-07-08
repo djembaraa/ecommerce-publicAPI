@@ -9,7 +9,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="text-2xl font-bold tracking-wider">
-              Cyber
+              Cyber Beauty
             </Link>
           </div>
 
@@ -22,7 +22,7 @@ export default function Navbar() {
               <input
                 type="text"
                 className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-gray-800 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:text-gray-900 sm:text-sm transition duration-150 ease-in-out"
-                placeholder="Search"
+                placeholder="Search products..."
               />
             </div>
           </div>
@@ -37,15 +37,15 @@ export default function Navbar() {
 
           {/* Icons */}
           <div className="flex items-center space-x-6 ml-6">
-            <button className="text-gray-400 hover:text-white">
+            <Link href="/wishlist" className="text-gray-400 hover:text-white">
               <Heart className="h-6 w-6" />
-            </button>
-            <button className="text-gray-400 hover:text-white relative">
+            </Link>
+            <Link href="/cart" className="text-gray-400 hover:text-white relative">
               <ShoppingCart className="h-6 w-6" />
-            </button>
-            <button className="text-gray-400 hover:text-white">
+            </Link>
+            <Link href="/login" className="text-gray-400 hover:text-white">
               <User className="h-6 w-6" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

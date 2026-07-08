@@ -1,14 +1,15 @@
 import { Product } from "../types";
 import Image from "next/image";
 import { Heart } from "lucide-react";
+import Link from "next/link";
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="bg-[#f6f6f6] rounded-xl p-6 flex flex-col items-center relative transition-transform hover:scale-105 group">
       {/* Wishlist Button */}
-      <button className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors">
+      <Link href="/wishlist" className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors">
         <Heart className="h-6 w-6" />
-      </button>
+      </Link>
 
       {/* Image */}
       <div className="relative w-40 h-40 mb-6 mt-4">
@@ -31,9 +32,9 @@ export default function ProductCard({ product }: { product: Product }) {
           ${product.price}
         </p>
 
-        <button className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+        <Link href="/cart" className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors block text-center">
           Buy Now
-        </button>
+        </Link>
       </div>
     </div>
   );
