@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "../providers";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import ClientLayoutWrapper from "./components/ClientLayoutWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Cyber E-Commerce",
-  description: "Generated API By Djembar Arafat",
+  title: "Cyber Beauty | Premium E-Commerce",
+  description: "A premium beauty e-commerce web application featuring modern layouts and an immersive user interface.",
 };
 
 export default function RootLayout({
@@ -21,13 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-grow">
-              {children}
-            </main>
-            <Footer />
-          </div>
+          <ClientLayoutWrapper>
+            {children}
+          </ClientLayoutWrapper>
         </Providers>
       </body>
     </html>

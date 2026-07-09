@@ -1,39 +1,40 @@
-import { Sparkles, Brush, FlaskConical, Scissors, Bath, ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
+import { Sparkles, Brush, FlaskConical, Scissors, Bath, ShoppingBag } from "lucide-react";
+import SectionHeader from "./ui/SectionHeader";
+import Link from "next/link";
 
 export default function CategoryList() {
   const categories = [
-    { name: "Skincare", icon: Sparkles },
-    { name: "Makeup", icon: Brush },
-    { name: "Fragrances", icon: FlaskConical },
-    { name: "Hair Care", icon: Scissors },
-    { name: "Bath & Body", icon: Bath },
-    { name: "Accessories", icon: ShoppingBag },
+    { name: "Skincare", icon: Sparkles, slug: "skin-care" },
+    { name: "Makeup", icon: Brush, slug: "beauty" },
+    { name: "Fragrances", icon: FlaskConical, slug: "fragrances" },
+    { name: "Hair Care", icon: Scissors, slug: "beauty" }, // Fallback to beauty since dummyjson lacks this
+    { name: "Bath & Body", icon: Bath, slug: "beauty" },
+    { name: "Accessories", icon: ShoppingBag, slug: "beauty" },
   ];
 
   return (
-    <div className="bg-gray-50 py-16">
+    <div className="bg-[var(--color-surface-alt)] section-padding">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-semibold">Browse By Category</h2>
-          <div className="flex space-x-2">
-            <button className="p-2 text-gray-600 hover:text-black">
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-            <button className="p-2 text-gray-600 hover:text-black">
-              <ChevronRight className="h-6 w-6" />
-            </button>
-          </div>
-        </div>
+        
+        <SectionHeader 
+          title="Browse By Category" 
+          subtitle="Explore our carefully curated collections tailored for your beauty routine."
+        />
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {categories.map((cat) => (
-            <div 
-              key={cat.name} 
-              className="bg-gray-200 rounded-xl p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-300 transition-colors"
+            <Link
+              key={cat.name}
+              href={`/?q=${cat.slug}`}
+              className="bg-white rounded-2xl p-6 flex flex-col items-center justify-center cursor-pointer border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:shadow-lg transition-all duration-300 group"
             >
-              <cat.icon className="h-10 w-10 mb-4 text-gray-800" strokeWidth={1.5} />
-              <span className="text-sm font-medium text-gray-800">{cat.name}</span>
-            </div>
+              <div className="w-12 h-12 rounded-full bg-[var(--color-secondary)] flex items-center justify-center mb-4 group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors text-[var(--color-text)]">
+                <cat.icon className="h-6 w-6" strokeWidth={1.5} />
+              </div>
+              <span className="text-sm font-semibold text-[var(--color-text)] text-center group-hover:text-[var(--color-primary)]">
+                {cat.name}
+              </span>
+            </Link>
           ))}
         </div>
       </div>

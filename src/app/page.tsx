@@ -1,37 +1,59 @@
-"use client";
+'use client';
 
-import { useQuery } from "@tanstack/react-query";
-import { useState, useMemo, useEffect } from "react";
-import { Product } from "./types";
-import ProductCard from "./components/ProductCard";
-import Hero from "./components/Hero";
-import CategoryList from "./components/CategoryList";
-import Banner from "./components/Banner";
+import { useQuery } from '@tanstack/react-query';
+import { useState, useMemo, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { Product, ProductsResponse } from './types';
+import { API_BASE_URL, BEAUTY_CATEGORIES } from './constants';
+import ProductCard from './components/ProductCard';
+import Hero from './components/Hero';
+import CategoryList from './components/CategoryList';
+import Banner from './components/Banner';
+import SectionHeader from './components/ui/SectionHeader';
+import Input from './components/ui/Input';
+import Button from './components/ui/Button';
+import { Search } from 'lucide-react';
 
 const getProducts = async (): Promise<Product[]> => {
-  const res = await fetch("https://dummyjson.com/products?limit=100");
-  if (!res.ok) {
-    throw new Error("Network response was not ok");
-  }
-  const data = await res.json();
-  // Filter only beauty-related categories so tech items don't appear
-  const beautyCategories = ["beauty", "fragrances", "skin-care"];
-  return data.products.filter((product: Product) => 
-    beautyCategories.includes(product.category)
+  const res = await fetch(`${API_BASE_URL}/products?limit=100`);
+  if (!res.ok) throw new Error('Network response was not ok');
+  
+  const data: ProductsResponse = await res.json();
+  
+  // Filter only beauty-related categories
+  return data.products.filter((product) => 
+    BEAUTY_CATEGORIES.includes(product.category as any)
   );
 };
 
-export default function Home() {
-  const [activeTab, setActiveTab] = useState("New Arrival");
-  const [filter, setFilter] = useState("");
-  const [selectedTag, setSelectedTag] = useState("all");
+function HomeContent() {
+  const searchParams = useSearchParams();
+  const queryParam = searchParams.get('q'); // For category filtering from CategoryList or Search
+
+  const [activeTab, setActiveTab] = useState('New Arrival');
+  const [filter, setFilter] = useState('');
+  const [selectedTag, setSelectedTag] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 8; // Tampilkan 8 produk per halaman
+  const productsPerPage = 12;
 
   const { data, isLoading, isError, error } = useQuery<Product[], Error>({
-    queryKey: ["products"],
+    queryKey: ['products'],
     queryFn: getProducts,
   });
+
+  // Sync URL query param to our filter
+  useEffect(() => {
+    if (queryParam) {
+      if (BEAUTY_CATEGORIES.includes(queryParam as any)) {
+        // Since we don't have a category select, we can put it in the text filter or tag
+        // Actually, dummyjson category names are exactly the slug
+        // Let's just use it in the title/category filter
+        setFilter(queryParam);
+      } else {
+        setFilter(queryParam);
+      }
+    }
+  }, [queryParam]);
 
   const allTags = useMemo(() => {
     if (!data) return [];
@@ -48,26 +70,29 @@ export default function Home() {
     if (!data) return [];
     let products = [...data];
 
-    // Dummy logic to make the tabs show different items based on user request
-    if (activeTab === "Bestseller") {
+    // Tab Sorting
+    if (activeTab === 'Bestseller') {
       products.sort((a, b) => b.rating - a.rating);
-    } else if (activeTab === "Featured Products") {
-      // Just an arbitrary sort to make it look different (e.g. by highest price)
+    } else if (activeTab === 'Featured Products') {
       products.sort((a, b) => b.price - a.price);
     } else {
-      // New Arrival (default), just show as is or reversed
+      // New Arrival (default), just reverse API order
       products.reverse();
     }
 
-    if (selectedTag !== "all") {
+    // Tag Filter
+    if (selectedTag !== 'all') {
       products = products.filter((product) =>
         product.tags && product.tags.includes(selectedTag)
       );
     }
 
+    // Text Filter (search by title or category)
     if (filter) {
+      const lowerFilter = filter.toLowerCase();
       products = products.filter((product) =>
-        product.title.toLowerCase().includes(filter.toLowerCase())
+        product.title.toLowerCase().includes(lowerFilter) ||
+        product.category.toLowerCase().includes(lowerFilter)
       );
     }
     return products;
@@ -79,115 +104,142 @@ export default function Home() {
 
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage;
-  const currentProducts = filteredProducts.slice(
-    firstProductIndex,
-    lastProductIndex
-  );
+  const currentProducts = filteredProducts.slice(firstProductIndex, lastProductIndex);
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
-  const goToNextPage = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-  };
-
-  const goToPrevPage = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
-  };
-
-  const tabs = ["New Arrival", "Bestseller", "Featured Products"];
+  const tabs = ['New Arrival', 'Bestseller', 'Featured Products'];
 
   return (
-    <div className="bg-white min-h-screen font-sans">
+    <div className="bg-[var(--color-surface)] min-h-screen font-sans">
       <Hero />
       <CategoryList />
 
       {/* Products Section */}
-      <div id="products" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        
-        {/* Tabs */}
-        <div className="flex space-x-8 border-b border-gray-200 mb-8">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`pb-4 text-lg font-medium transition-colors border-b-2 ${
-                activeTab === tab
-                  ? "border-black text-black"
-                  : "border-transparent text-gray-400 hover:text-gray-700"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        {/* Existing Filters (Integrated below tabs for functionality) */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-8">
-          <input
-            type="text"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            placeholder="Search product by title..."
-            className="w-full sm:w-2/3 p-3 border border-gray-200 rounded-lg text-black focus:outline-none focus:ring-1 focus:ring-black transition"
+      <div id="products" className="bg-[var(--color-surface)] section-padding">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <SectionHeader 
+            title="Curated For You" 
+            subtitle="Explore our most loved beauty essentials, from everyday staples to luxurious indulgences."
           />
-          <select
-            value={selectedTag}
-            onChange={(e) => setSelectedTag(e.target.value)}
-            className="w-full sm:w-1/3 p-3 border border-gray-200 rounded-lg bg-white text-black focus:outline-none focus:ring-1 focus:ring-black transition"
-          >
-            <option value="all">All Categories</option>
-            {allTags.map((tag) => (
-              <option key={tag} value={tag} className="capitalize">
-                {tag}
-              </option>
-            ))}
-          </select>
-        </div>
 
-        {isLoading ? (
-          <div className="py-16 text-center text-gray-500">Loading products...</div>
-        ) : isError ? (
-          <div className="py-16 text-center text-red-500">Error: {error.message}</div>
-        ) : (
-          <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {currentProducts.length > 0 ? (
-                currentProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))
-              ) : (
-                <div className="col-span-full text-center text-gray-500 py-16">
-                  <h3 className="text-xl font-medium mb-2">No Products Found</h3>
-                  <p>Try adjusting your search or filter criteria.</p>
-                </div>
-              )}
+          {/* Filtering & Tabs Container (Common Region) */}
+          <div className="bg-[var(--color-surface-alt)] p-6 rounded-2xl mb-12 border border-[var(--color-border)]">
+            
+            {/* Tabs */}
+            <div className="flex flex-wrap gap-2 mb-6 border-b border-[var(--color-border)] pb-6">
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                    activeTab === tab
+                      ? 'bg-[var(--color-primary)] text-white shadow-md'
+                      : 'bg-transparent text-[var(--color-text-muted)] hover:bg-gray-100'
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
             </div>
 
-            {totalPages > 1 && (
-              <div className="mt-12 flex justify-center items-center gap-4">
-                <button
-                  onClick={goToPrevPage}
-                  disabled={currentPage === 1}
-                  className="px-6 py-2 border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-black transition-colors"
-                >
-                  Previous
-                </button>
-                <span className="text-gray-600 font-medium">
-                  Page {currentPage} of {totalPages}
-                </span>
-                <button
-                  onClick={goToNextPage}
-                  disabled={currentPage === totalPages}
-                  className="px-6 py-2 border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-black transition-colors"
-                >
-                  Next
-                </button>
+            {/* Filters */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-1">
+                <Input
+                  value={filter}
+                  onChange={(e) => setFilter(e.target.value)}
+                  placeholder="Search by product name..."
+                  icon={<Search className="w-5 h-5" />}
+                />
               </div>
-            )}
-          </>
-        )}
+              <div className="w-full sm:w-64 shrink-0">
+                <select
+                  value={selectedTag}
+                  onChange={(e) => setSelectedTag(e.target.value)}
+                  className="w-full px-4 py-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all duration-200 cursor-pointer appearance-none capitalize"
+                  style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
+                >
+                  <option value="all">All Tags</option>
+                  {allTags.map((tag) => (
+                    <option key={tag} value={tag}>
+                      {tag}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Product Grid */}
+          {isLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="animate-pulse bg-gray-100 rounded-2xl h-96 w-full" />
+              ))}
+            </div>
+          ) : isError ? (
+            <div className="py-16 text-center">
+              <p className="text-[var(--color-danger)] font-medium mb-4">Failed to load products: {error.message}</p>
+              <Button onClick={() => window.location.reload()}>Try Again</Button>
+            </div>
+          ) : (
+            <>
+              {currentProducts.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {currentProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              ) : (
+                <div className="py-24 text-center bg-[var(--color-surface-alt)] rounded-3xl border border-[var(--color-border)]">
+                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Search className="w-8 h-8 text-gray-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[var(--color-text)] mb-2">No Products Found</h3>
+                  <p className="text-[var(--color-text-muted)] mb-6">We couldn't find anything matching your current filters.</p>
+                  <Button onClick={() => { setFilter(''); setSelectedTag('all'); }}>
+                    Clear Filters
+                  </Button>
+                </div>
+              )}
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="mt-16 flex justify-center items-center gap-6">
+                  <Button
+                    variant="secondary"
+                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                    disabled={currentPage === 1}
+                  >
+                    Previous
+                  </Button>
+                  <span className="text-sm font-medium text-[var(--color-text)]">
+                    Page {currentPage} of {totalPages}
+                  </span>
+                  <Button
+                    variant="secondary"
+                    onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                  >
+                    Next
+                  </Button>
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
 
       <Banner />
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomeContent />
+    </Suspense>
   );
 }

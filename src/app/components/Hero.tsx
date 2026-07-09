@@ -1,87 +1,51 @@
-import Image from "next/image";
-import Link from "next/link";
+import Link from 'next/link';
+import Button from './ui/Button';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <div className="w-full bg-[#111111] text-white">
-      {/* Main Container */}
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row">
+    <div className="relative w-full bg-[var(--color-primary)] text-white overflow-hidden">
+      {/* Background glow effects */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--color-accent)] rounded-full mix-blend-screen filter blur-[100px] opacity-20 translate-x-1/3 -translate-y-1/3" />
+      
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center section-padding px-4 sm:px-6 lg:px-8">
         
-        {/* Left Side: Main Feature (Perfume) */}
-        <div className="md:w-1/2 flex items-center justify-center p-8 md:p-16 lg:px-24">
-          <div className="max-w-md">
-            <h3 className="text-gray-400 font-semibold mb-2">Premium Collection.</h3>
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight mb-4">
-              Luxury <span className="font-bold">Essence</span>
-            </h1>
-            <p className="text-gray-400 mb-8">
-              Discover the true essence of pure beauty and elegance. Created to make you shine.
-            </p>
-            <Link 
-              href="#products" 
-              className="inline-block px-12 py-3 border border-white rounded-md hover:bg-white hover:text-black transition-colors"
-            >
-              Shop Now
-            </Link>
+        {/* Left Side: Copy & CTA */}
+        <div className="md:w-1/2 flex flex-col items-start z-10 mb-12 md:mb-0">
+          <span className="text-[var(--color-accent)] font-semibold tracking-wider uppercase text-sm mb-4">
+            New Collection 2026
+          </span>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
+            Redefine Your <br />
+            <span className="font-light italic text-gray-300">Natural Glow</span>
+          </h1>
+          <p className="text-gray-400 text-lg mb-10 max-w-lg leading-relaxed">
+            Discover the true essence of pure beauty with our curated selection of premium skincare, flawless makeup, and signature fragrances.
+          </p>
+          <div className="flex gap-4">
+            <Button href="#products" size="lg" variant="accent">
+              Shop the Collection
+            </Button>
+            <Button href="/about" size="lg" variant="ghost" className="text-white hover:bg-white/10 hover:text-white">
+              Our Story
+            </Button>
           </div>
         </div>
 
-        {/* Right Side: Grid of other products */}
-        <div className="md:w-1/2 bg-[#111111] border-l border-gray-800">
-          
-          {/* Top Half (Skincare) */}
-          <div className="h-1/2 border-b border-gray-800 flex items-center bg-white text-black p-8 relative overflow-hidden">
-            <div className="relative z-10 w-2/3">
-              <h2 className="text-4xl font-bold mb-2">Advanced Skincare</h2>
-              <p className="text-gray-500 mb-4 text-sm">
-                Revitalize your skin with our deeply hydrating and nourishing formulas. Feel the ultimate glow.
-              </p>
-            </div>
-          </div>
-
-          {/* Bottom Half Grid */}
-          <div className="h-1/2 flex">
-            
-            {/* Bottom Left: Makeup & Bath */}
-            <div className="w-1/2 border-r border-gray-800 flex flex-col">
-              
-              {/* Makeup */}
-              <div className="h-1/2 border-b border-gray-800 bg-[#ededed] text-black p-6 flex flex-col justify-center relative overflow-hidden">
-                 <div className="relative z-10">
-                   <h3 className="text-2xl font-light">Flawless<br/><span className="font-bold">Makeup</span></h3>
-                   <p className="text-gray-500 text-xs mt-2">Enhance your natural beauty flawlessly.</p>
-                 </div>
-                 <div className="absolute right-[-20%] bottom-[-20%] w-24 h-24 bg-[#ffb6c1] rounded-full blur-2xl opacity-50"></div>
-              </div>
-              
-              {/* Bath */}
-              <div className="h-1/2 bg-[#353535] p-6 flex flex-col justify-center relative overflow-hidden">
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-light">Bath &<br/><span className="font-bold">Body Care</span></h3>
-                  <p className="text-gray-400 text-xs mt-2">A soothing experience for everyday luxury.</p>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Bottom Right: Signature Perfumes */}
-            <div className="w-1/2 bg-[#ededed] text-black p-8 flex flex-col justify-center relative overflow-hidden">
-              <div className="relative z-10">
-                <h2 className="text-4xl font-light mb-2">Signature <span className="font-bold">Scents</span></h2>
-                <p className="text-gray-500 text-xs mb-4">
-                  Find the perfect fragrance that matches your unique personality and style.
-                </p>
-                <Link 
-                  href="#products" 
-                  className="inline-block px-8 py-2 border border-black rounded-md hover:bg-black hover:text-white transition-colors text-sm"
-                >
-                  Shop Now
-                </Link>
-              </div>
-            </div>
-          </div>
-
+        {/* Right Side: Imagery */}
+        <div className="md:w-1/2 w-full relative aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+          <Image
+            src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp"
+            alt="Essence Mascara - Premium Beauty"
+            fill
+            className="object-cover hover:scale-105 transition-transform duration-700"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+          />
+          {/* Subtle gradient overlay to ensure text readability if it ever overlaps */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
         </div>
+
       </div>
     </div>
   );
