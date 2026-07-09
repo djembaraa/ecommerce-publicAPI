@@ -75,7 +75,7 @@ export default function ProfilePage() {
                 </div>
 
                 <Button 
-                  variant="outline" 
+                  variant="secondary" 
                   fullWidth 
                   className="mt-8 text-[var(--color-danger)] border-[var(--color-danger)] hover:bg-red-50"
                   onClick={() => {
@@ -151,21 +151,21 @@ export default function ProfilePage() {
                     <h4 className="font-medium text-[var(--color-text)]">Personal Information</h4>
                     <p className="text-sm text-[var(--color-text-muted)]">Update your name, email, and phone number</p>
                   </div>
-                  <Button variant="outline" size="sm">Edit</Button>
+                  <Button variant="secondary" size="sm">Edit</Button>
                 </div>
                 <div className="flex items-center justify-between p-4 rounded-xl hover:bg-[var(--color-surface-alt)] transition-colors cursor-pointer border border-transparent hover:border-[var(--color-border)]">
                   <div>
                     <h4 className="font-medium text-[var(--color-text)]">Change Password</h4>
                     <p className="text-sm text-[var(--color-text-muted)]">Ensure your account stays secure</p>
                   </div>
-                  <Button variant="outline" size="sm">Update</Button>
+                  <Button variant="secondary" size="sm">Update</Button>
                 </div>
                 <div className="flex items-center justify-between p-4 rounded-xl hover:bg-[var(--color-surface-alt)] transition-colors cursor-pointer border border-transparent hover:border-[var(--color-border)]">
                   <div>
                     <h4 className="font-medium text-[var(--color-text)]">Notification Preferences</h4>
                     <p className="text-sm text-[var(--color-text-muted)]">Manage emails, SMS, and promos</p>
                   </div>
-                  <Button variant="outline" size="sm">Manage</Button>
+                  <Button variant="secondary" size="sm">Manage</Button>
                 </div>
               </div>
             </div>
