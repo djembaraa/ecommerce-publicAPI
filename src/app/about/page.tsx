@@ -35,7 +35,7 @@ export default function AboutPage() {
         </div>
         <div className="md:w-1/2 relative h-[500px] w-full rounded-3xl overflow-hidden shadow-2xl border border-[var(--color-border)]">
           <Image 
-            src="https://cdn.dummyjson.com/product-images/skin-care/skincare-serum/1.webp" 
+            src="https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/1.webp" 
             alt="Skincare Philosophy" 
             fill 
             className="object-cover"

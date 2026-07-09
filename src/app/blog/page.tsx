@@ -11,7 +11,7 @@ export default function BlogPage() {
       title: "The Ultimate Guide to Glass Skin",
       excerpt: "Discover the 7-step Korean skincare routine that promises poreless, luminous skin without the heavy makeup.",
       category: "Skincare",
-      image: "https://cdn.dummyjson.com/product-images/skin-care/skincare-serum/1.webp",
+      image: "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/1.webp",
       date: "Oct 12, 2026"
     },
     {
@@ -19,7 +19,7 @@ export default function BlogPage() {
       title: "Top 5 Autumn Fragrances",
       excerpt: "Transition into the cooler months with these warm, woody, and subtly sweet signature scents.",
       category: "Fragrance",
-      image: "https://cdn.dummyjson.com/product-images/fragrances/dior-jadore/1.webp",
+      image: "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/1.webp",
       date: "Oct 08, 2026"
     },
     {

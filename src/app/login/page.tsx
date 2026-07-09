@@ -93,7 +93,7 @@ export default function LoginPage() {
            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[var(--color-accent)] rounded-full mix-blend-screen blur-[150px] translate-x-1/3 -translate-y-1/3" />
         </div>
         <Image 
-          src="https://cdn.dummyjson.com/product-images/skin-care/laneige-lip-sleeping-mask/1.webp" 
+          src="https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/1.webp" 
           alt="Premium Beauty" 
           fill 
           className="object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal hover:scale-105 transition-all duration-1000"
