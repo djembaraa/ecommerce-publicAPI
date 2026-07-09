@@ -90,6 +90,14 @@ export default function Navbar() {
                       <p className="text-sm font-semibold">{user?.firstName} {user?.lastName}</p>
                       <p className="text-xs text-[var(--color-text-muted)] truncate">{user?.email}</p>
                     </div>
+                    <Link
+                      href="/profile"
+                      onClick={() => setUserMenuOpen(false)}
+                      className="w-full flex items-center gap-2 px-4 py-3 text-sm text-[var(--color-text)] hover:bg-gray-50 transition-colors cursor-pointer border-b border-[var(--color-border)]"
+                    >
+                      <User className="h-4 w-4" />
+                      My Profile
+                    </Link>
                     <button
                       onClick={() => { logout(); setUserMenuOpen(false); }}
                       className="w-full flex items-center gap-2 px-4 py-3 text-sm text-[var(--color-danger)] hover:bg-gray-50 transition-colors cursor-pointer"
